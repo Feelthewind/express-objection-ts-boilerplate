@@ -11,10 +11,12 @@ require("dotenv").config();
 import path from "path";
 
 import knexConfig from "../knexfile";
+import authRouter from "./routes/auth";
 
 const knex = Knex(knexConfig.development);
 knex.migrate.latest();
 // knex.migrate.rollback({}, true);
+Model.knex(knex);
 
 const app = express();
 
@@ -29,6 +31,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(flash());
+
+app.use("/auth", authRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if (err) {
