@@ -1,5 +1,4 @@
 import request from "supertest";
-
 import { Express } from "express";
 
 import initServer from "../src/server";

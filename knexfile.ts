@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-export default {
+module.exports = {
   test: {
     client: "sqlite3",
     connection: {
