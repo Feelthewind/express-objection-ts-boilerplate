@@ -1,5 +1,5 @@
 import initServer from "./server";
-import initDB from "./db/init";
+import { initDB } from "./db/helpers";
 
 (async () => {
   await initDB();

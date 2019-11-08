@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest --forceExit --runInBand --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,9 @@
     "@types/jest": "^24.0.22",
     "@types/morgan": "^1.7.37",
     "@types/passport": "^1.0.1",
+    "@types/supertest": "^2.0.8",
     "jest": "^24.9.0",
+    "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"

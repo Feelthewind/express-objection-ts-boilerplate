@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response, NextFunction, Express } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -9,8 +9,9 @@ require("dotenv").config();
 import path from "path";
 
 import authRouter from "./routes/auth";
+import errorHandler from "./utils/errorHandler";
 
-const initServer = () => {
+const initServer = (): Express => {
   const app = express();
 
   const sessionMiddleware = session({
@@ -40,15 +41,19 @@ const initServer = () => {
 
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     if (err) {
-      // errorHandler(err, res);
+      errorHandler(err, res);
     } else {
       next();
     }
   });
 
-  app.listen(app.get("port"), () => {
-    console.log("Auction app listening at port %s", app.get("port"));
-  });
+  if (process.env.NODE_ENV !== "test") {
+    app.listen(app.get("port"), () => {
+      console.log("Auction app listening at port %s", app.get("port"));
+    });
+  }
+
+  return app;
 };
 
 export default initServer;
