@@ -40,7 +40,7 @@
     "objection-db-errors": "^1.1.1",
     "passport": "^0.4.0",
     "pg": "^7.12.1",
-    "pug": "^2.0.4"
+    "pug": "^3.0.1"
   },
   "jest": {
     "preset": "ts-jest"
